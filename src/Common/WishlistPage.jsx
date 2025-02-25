@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromWishlist } from "../redux/wishlistSlice.jsx";
+import { removeFromWishlist } from "../redux/WishlistSlice";
 import { FaHeart } from "react-icons/fa";
 
 const Wishlist = () => {
