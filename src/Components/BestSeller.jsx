@@ -1,7 +1,7 @@
 import { products } from "../data/Data";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Heading from "../common/Heading";
+import Heading from "../Common/Heading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
