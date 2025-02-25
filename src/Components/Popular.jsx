@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight, faHeart, faBalanceScale, faEye } from "@fortawesome/free-solid-svg-icons";
-import Heading from "../Common/Header";
+import Heading from "../Common/Heading";
 
 const NextArrow = ({ onClick }) => (
   <div
