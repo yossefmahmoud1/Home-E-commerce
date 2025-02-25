@@ -1,0 +1,32 @@
+@import "tailwindcss";
+*{
+    font-family: "Poppins", serif;
+
+}
+::-webkit-scrollbar {
+    width: 14px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: linear-gradient(45deg, #F5EFE6, #E8DCCA); 
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2); 
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #8B735B, #6B5640); 
+    border-radius: 10px;
+    border: 2px solid #F5EFE6; 
+    transition: all 0.3s ease-in-out;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #6B5640, #4A3324); 
+    box-shadow: 0 0 10px rgba(107, 86, 64, 0.8); 
+    transform: scale(1.1); 
+  }
+  
+  body {
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
