@@ -1,4 +1,4 @@
-# Latest Project: E-Commerce Furniture Store
+#  E-Commerce Furniture Store
 
 I recently developed a highly interactive, customizable, and responsive e-commerce platform for a furniture store, delivering a seamless user experience with modern technologies.
 
@@ -19,7 +19,29 @@ I recently developed a highly interactive, customizable, and responsive e-commer
 - **Dynamic Filtering and Sorting**: Allows users to filter products by categories, prices, etc.
 
 ## Installation:
-
-1. Clone the repo:
+Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/furniture-store.git
+  https://github.com/yossefmahmoud1/Home-E-commerce.git
+
+   ```
+## Install dependencies:
+Clone the repository: 
+```bash
+
+npm install
+
+   ```
+## Start the application:
+Clone the repository:  
+```bash
+
+npm start
+
+   ```
+Open the app in your browser at: http://localhost:3000
+
+## Contributing:
+Feel free to fork the project and submit pull requests for improvements.
+
+## Contact:
+For any questions or suggestions, reach out to me at omaryosef136@gmail.com.
