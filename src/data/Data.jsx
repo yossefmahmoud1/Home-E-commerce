@@ -2,18 +2,16 @@ import { FaFacebookF, FaInstagram, FaYoutube, FaTwitter } from "react-icons/fa";
 
 export const nav = [
   { path: "/", text: "Home" },
-  { path: "/features", text: "Features" },
+  { path: "/#features", text: "Features" },
   { path: "/shop", text: "Shop" },
-  { path: "/page", text: "Pages" },
-  { path: "/blog", text: "Blog" },
-  { path: "/contact", text: "Contact" },
+  { path: "/#contact", text: "Contact" },
 ];
 
 export const aweicon = [
-  { icon: <FaFacebookF className="mr-4" /> },
-  { icon: <FaInstagram className="mr-4" /> },
-  { icon: <FaYoutube className="mr-4" /> },
-  { icon: <FaTwitter className="mr-4" /> },
+  { icon: <FaFacebookF /> },
+  { icon: <FaInstagram /> },
+  { icon: <FaYoutube /> },
+  { icon: <FaTwitter /> },
 ];
 
 export const sliderdata = [

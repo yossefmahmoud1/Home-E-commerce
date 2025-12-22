@@ -12,76 +12,68 @@ const Category = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 7,
-    slidesToScroll: 1,
+    slidesToShow: 6,
+    slidesToScroll: 2,
     autoplay: false,
     arrows: false,
     responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 4,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
+      { breakpoint: 1280, settings: { slidesToShow: 5 } },
+      { breakpoint: 1024, settings: { slidesToShow: 4 } },
+      { breakpoint: 768, settings: { slidesToShow: 3 } },
+      { breakpoint: 640, settings: { slidesToShow: 2 } },
     ],
   };
 
   return (
-    <div className="w-full py-6">
-      {/* عرض العناصر ثابت في الشاشات الكبيرة */}
-      <div className="hidden lg:flex lg:flex-wrap lg:justify-between gap-4 px-4">
-        {category.map((item, index) => (
-          <div
-            key={index}
-            className="w-[13%] bg-gray-100 p-6 rounded-lg flex flex-col items-center justify-center shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
-          >
-            <img src={item.img} alt={item.category} className="w-24 h-24 object-contain mb-2" />
-            <p className="text-lg font-semibold  text-red-500">{item.category}</p>
+    <section className="py-16 bg-[var(--color-background)]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Header with Navigation Arrows */}
+        <div className="flex justify-between items-end mb-8">
+          <div>
+            <h2 className="text-3xl font-bold text-gray-900 tracking-tight mb-2">Shop by Category</h2>
+            <p className="text-gray-500">Explore our curated collections</p>
           </div>
-        ))}
-      </div>
+          <div className="flex gap-2">
+            <button
+              onClick={() => sliderRef.current.slickPrev()}
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-[var(--color-primary)] hover:text-white hover:border-[var(--color-primary)] transition-all duration-300"
+            >
+              <FaChevronLeft />
+            </button>
+            <button
+              onClick={() => sliderRef.current.slickNext()}
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-[var(--color-primary)] hover:text-white hover:border-[var(--color-primary)] transition-all duration-300"
+            >
+              <FaChevronRight />
+            </button>
+          </div>
+        </div>
 
-      {/* السلايدر للشاشات الصغيرة والمتوسطة فقط */}
-      <div className="lg:hidden relative">
-        <Slider ref={sliderRef} {...settings}>
-          {category.map((item, index) => (
-            <div key={index} className="px-2">
-              <div className="bg-gray-100 p-6 rounded-lg flex flex-col items-center justify-center shadow-md transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
-                <img src={item.img} alt={item.category} className="w-24 h-24 object-contain mb-2" />
-                <p className="text-lg font-semibold text-red-500">{item.category}</p>
+        {/* Carousel */}
+        <div className="-mx-3">
+          <Slider ref={sliderRef} {...settings}>
+            {category.map((item, index) => (
+              <div key={index} className="px-3">
+                <div className="group bg-white border border-gray-100 rounded-2xl p-6 text-center cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-[var(--color-secondary)]">
+                  <div className="bg-stone-50 w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-4 transition-colors duration-300 group-hover:bg-stone-100">
+                    <img 
+                      src={item.img} 
+                      alt={item.category} 
+                      className="w-14 h-14 object-contain opacity-80 group-hover:opacity-100 transition-opacity" 
+                    />
+                  </div>
+                  <h3 className="text-lg font-medium text-gray-900 group-hover:text-[var(--color-primary)] transition-colors">
+                    {item.category}
+                  </h3>
+                </div>
               </div>
-            </div>
-          ))}
-        </Slider>
+            ))}
+          </Slider>
+        </div>
 
-        {/* الأسهم تعمل الآن بشكل صحيح عند النقر */}
-        <button
-          onClick={() => sliderRef.current.slickPrev()}
-          className="lg:hidden absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white p-3 rounded-full transition-all duration-300 hover:bg-gray-900 hover:shadow-lg hover:scale-110 hover:-translate-x-1"
-        >
-          <FaChevronLeft className="text-xl" />
-        </button>
-
-        <button
-          onClick={() => sliderRef.current.slickNext()}
-          className="lg:hidden absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-700 text-white p-3 rounded-full transition-all duration-300 hover:bg-gray-900 hover:shadow-lg hover:scale-110 hover:translate-x-1"
-        >
-          <FaChevronRight className="text-xl" />
-        </button>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -1,14 +1,14 @@
-import { products } from "../data/Data";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Heading from "../Common/Heading";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import Heading from "../Common/Heading";
+import ProductCard from "./ProductCard";
+import { products } from "../data/Data";
 
-const Category = () => {
+const BestSeller = () => {
   const [menuItem, setMenuItem] = useState(products);
+  const [activeCategory, setActiveCategory] = useState("all");
 
   const filterItems = (name) => {
+    setActiveCategory(name);
     if (name === "all") {
       setMenuItem(products);
     } else {
@@ -17,60 +17,44 @@ const Category = () => {
     }
   };
 
-  return (
-    <div className="bg-white mt-10 text-center px-4 sm:px-6 md:px-10 lg:px-16">
-      <Heading
-        title="Best Seller"
-        description="LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY"
-      />
-      <div className="flex flex-wrap justify-center gap-2 sm:gap-3 my-5">
-        {["all", "DECOR", "KITCHEN", "LIVING ROOM", "SOFA"].map((category) => (
-          <button
-            key={category}
-            className="bg-gray-200 py-1.5 px-3 sm:py-2 sm:px-4 text-xs sm:text-sm md:text-base text-black font-semibold hover:bg-black hover:text-white transition-all duration-300 rounded-md"
-            onClick={() => filterItems(category)}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
+  const categories = ["all", "DECOR", "KITCHEN", "LIVING ROOM", "SOFA"];
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-2 sm:p-5">
-        {menuItem.map((item, index) => (
-          <div key={index} className="relative bg-white p-3 sm:p-4 rounded-lg shadow-md hover:shadow-lg transition">
-            <div className="relative group">
-              <img
-                src={item.img}
-                title={item.name}
-                alt={item.name}
-                className="h-52 sm:h-64 w-full object-cover rounded-md"
-              />
-              <div className="absolute top-2 right-2 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-all">
-                {[
-                  { icon: "shopping-cart", title: "Add to cart" },
-                  { icon: "heart", title: "Add to wishlist" },
-                  { icon: "balance-scale", title: "Compare" },
-                  { icon: "eye", title: "View" },
-                ].map((action, i) => (
-                  <FontAwesomeIcon
-                    key={i}
-                    className="p-2 bg-white rounded-full hover:bg-red-500 hover:text-white cursor-pointer transition"
-                    title={action.title}
-                    icon={action.icon}
-                  />
-                ))}
-              </div>
+  return (
+    <section className="py-16 bg-[var(--color-background)]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Heading
+          title="Best Sellers"
+          description="Top picks our customers love the most."
+        />
+
+        {/* Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-2 mb-10">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => filterItems(category)}
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 capitalize ${
+                activeCategory === category
+                  ? "bg-[var(--color-primary)] text-white shadow-lg scale-105"
+                  : "bg-white text-gray-600 border border-gray-200 hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
+              }`}
+            >
+              {category.toLowerCase()}
+            </button>
+          ))}
+        </div>
+
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {menuItem.map((item, index) => (
+            <div key={index} className="animate-fadeIn">
+              <ProductCard product={item} />
             </div>
-            {/* معلومات المنتج */}
-            <div className="mt-3 sm:mt-4 text-center">
-              <div className="text-sm sm:text-lg font-semibold uppercase">{item.name}</div>
-              <div className="text-blue-800 font-bold text-sm sm:text-base">${item.price}</div>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Category;
+export default BestSeller;
