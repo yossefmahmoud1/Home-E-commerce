@@ -10,6 +10,8 @@ const Header = () => {
   const wishlistItems = useSelector((state) => state.wishlist?.data || []);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const location = useLocation();
+
   // Close mobile menu when route changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -72,7 +74,7 @@ const Header = () => {
       </div>
 
       {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 bg-white/95 backdrop-blur-xl z-40 transform transition-transform duration-300 ease-in-out md:hidden flex flex-col items-center justify-center space-y-8 ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`fixed top-20 left-0 w-full h-[calc(100vh-5rem)] bg-white z-40 transform transition-transform duration-300 ease-in-out md:hidden flex flex-col items-center justify-start pt-10 space-y-6 overflow-y-auto ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         {nav.map((list, key) => (
           <Navitem 
             key={key}
